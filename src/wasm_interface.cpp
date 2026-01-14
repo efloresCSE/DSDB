@@ -102,7 +102,7 @@ string executeCommand(string command) {
         return result.str();
         
     } catch (const error& e) {
-        return string("{\"error\": \"") + e.getError() + "\"}";
+        return string("{\"error\": \"") + e.what() + "\"}";
     } catch (const exception& e) {
         return string("{\"error\": \"") + e.what() + "\"}";
     } catch (...) {
@@ -127,8 +127,8 @@ void cleanup() {
 
 // Bind C++ functions to JavaScript
 EMSCRIPTEN_BINDINGS(txt2db_module) {
-    function("initDatabase", &initDatabase);
-    function("executeCommand", &executeCommand);
-    function("listTables", &listTables);
-    function("cleanup", &cleanup);
+    emscripten::function("initDatabase", &initDatabase);
+    emscripten::function("executeCommand", &executeCommand);
+    emscripten::function("listTables", &listTables);
+    emscripten::function("cleanup", &cleanup);
 }
