@@ -241,7 +241,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex h-screen bg-background">
+    <div className="flex h-screen">
       {/* Schema Panel */}
       <SchemaPanel
         onShowTable={(tableName) => {
