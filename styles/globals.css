@@ -129,27 +129,27 @@
     /* removed bg-background to let the html gradient show through */
   }
 
-  /* Add dark scrollbar styling for results tables */
+  /* Make scrollbar much darker and nearly invisible */
   .dark-scrollbar {
-    scrollbar-color: oklch(0.25 0 0) oklch(0.12 0 0);
+    scrollbar-color: oklch(0.15 0 0) transparent;
     scrollbar-width: thin;
   }
 
   .dark-scrollbar::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
 
   .dark-scrollbar::-webkit-scrollbar-track {
-    background: oklch(0.12 0 0);
+    background: transparent;
   }
 
   .dark-scrollbar::-webkit-scrollbar-thumb {
-    background: oklch(0.25 0 0);
-    border-radius: 4px;
+    background: oklch(0.15 0 0);
+    border-radius: 3px;
   }
 
   .dark-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: oklch(0.35 0 0);
+    background: oklch(0.25 0 0);
   }
 }
