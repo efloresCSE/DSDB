@@ -51,7 +51,7 @@ export function SchemaPanel({ onShowTable }: { onShowTable?: (tableName: string)
   }
 
   return (
-    <aside className="w-64 border-r border-border bg-card flex flex-col">
+    <aside className="w-64 border-r border-border flex flex-col">
       <div className="p-4 border-b border-border">
         <div className="flex items-center">
           <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
