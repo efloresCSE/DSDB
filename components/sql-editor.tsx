@@ -18,8 +18,8 @@ export function SqlEditor({ value, onChange }: SqlEditorProps) {
   }, [value])
 
   return (
-    <div className="relative bg-muted/30">
-      <div className="absolute left-0 top-0 bottom-0 w-12 bg-muted/50 flex flex-col items-center pt-4 text-xs text-muted-foreground font-mono">
+    <div className="relative bg-background">
+      <div className="absolute left-0 top-0 bottom-0 w-12 bg-background flex flex-col items-center pt-4 text-xs text-muted-foreground font-mono">
         {value.split("\n").map((_, i) => (
           <div key={i} className="leading-6">
             {i + 1}
