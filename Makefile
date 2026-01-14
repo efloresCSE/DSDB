@@ -20,12 +20,7 @@ LDFLAGS = -sWASM=1 \
           --bind
 
 # Source files
-SOURCES = src/wasm_interface.cpp \
-          src/sql.cpp \
-          src/parser.cpp \
-          src/table.cpp \
-          src/stokenizer.cpp \
-          src/ftokenizer.cpp
+SOURCES = $(wildcard src/*.cpp)
 
 # Output
 OUTPUT = public/txt2db.js
