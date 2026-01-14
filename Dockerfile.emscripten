@@ -1,0 +1,13 @@
+# Dockerfile for building TXT2DB with Emscripten
+FROM emscripten/emsdk:latest
+
+WORKDIR /app
+
+# Copy source files
+COPY src/ ./src/
+COPY Makefile ./
+
+# Build the WASM module
+RUN make
+
+# Output will be in /app/public/
