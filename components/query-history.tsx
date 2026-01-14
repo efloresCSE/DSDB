@@ -75,7 +75,7 @@ export function QueryHistory({ history, onClearHistory, onExportHistory, onSelec
         </div>
       </div>
 
-      <div className="flex-1 min-h-0 overflow-y-auto scrollbar-dark">
+      <div className="flex-1 min-h-0 overflow-y-auto dark-scrollbar">
         <div className="p-2 space-y-2">
           {history.length === 0 ? (
             <div className="text-center text-muted-foreground text-sm py-8">
@@ -152,7 +152,7 @@ export function QueryHistory({ history, onClearHistory, onExportHistory, onSelec
                               </div>
                               <div
                                 className={cn(
-                                  "text-xs bg-muted p-2 rounded overflow-x-auto scrollbar-dark",
+                                  "text-xs bg-muted p-2 rounded overflow-x-auto dark-scrollbar",
                                   isFullyExpanded && hasMoreRows && "max-h-[400px] overflow-y-auto",
                                 )}
                               >
