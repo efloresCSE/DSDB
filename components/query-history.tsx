@@ -152,7 +152,7 @@ export function QueryHistory({ history, onClearHistory, onExportHistory, onSelec
                               </div>
                               <div
                                 className={cn(
-                                  "text-xs bg-muted p-2 rounded overflow-x-auto",
+                                  "text-xs bg-muted p-2 rounded overflow-x-auto scrollbar-dark",
                                   isFullyExpanded && hasMoreRows && "max-h-[400px] overflow-y-auto",
                                 )}
                               >
