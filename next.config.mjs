@@ -7,12 +7,13 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  turbopack: {},
   webpack: (config, { isServer }) => {
     config.experiments = {
       ...config.experiments,
       asyncWebAssembly: true,
     };
-    
+
     config.module.rules.push({
       test: /\.wasm$/,
       type: 'webassembly/async',
