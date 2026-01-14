@@ -223,8 +223,7 @@ class TXT2DBWrapper {
           throw new Error("WASM not found")
         }
 
-        // @ts-ignore - Dynamic import of WASM module
-        const createModule = (await import("/txt2db.js")).default
+        const createModule = (await import("../public/txt2db.js")).default
 
         this.module = await createModule({
           locateFile: (path: string) => {
