@@ -39,7 +39,7 @@ export function ResultsTable({ data }: ResultsTableProps) {
   })
 
   return (
-    <div className="rounded-lg border border-border">
+    <div className="rounded-lg border border-border dark-scrollbar max-h-96 overflow-y-auto">
       <Table>
         <TableHeader className="sticky top-0 bg-muted/50 z-10">
           <TableRow>

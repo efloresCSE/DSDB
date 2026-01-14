@@ -128,4 +128,28 @@
     @apply text-foreground;
     /* removed bg-background to let the html gradient show through */
   }
+
+  /* Add dark scrollbar styling for results tables */
+  .dark-scrollbar {
+    scrollbar-color: oklch(0.25 0 0) oklch(0.12 0 0);
+    scrollbar-width: thin;
+  }
+
+  .dark-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .dark-scrollbar::-webkit-scrollbar-track {
+    background: oklch(0.12 0 0);
+  }
+
+  .dark-scrollbar::-webkit-scrollbar-thumb {
+    background: oklch(0.25 0 0);
+    border-radius: 4px;
+  }
+
+  .dark-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.35 0 0);
+  }
 }
