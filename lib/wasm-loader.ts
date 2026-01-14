@@ -217,15 +217,18 @@ class TXT2DBWrapper {
 
     this.initPromise = (async () => {
       try {
-        const response = await fetch("/txt2db.wasm", { method: "HEAD" })
-
-        if (!response.ok) {
-          throw new Error("WASM not found")
+        const wasmResponse = await fetch("/txt2db.js")
+        if (!wasmResponse.ok) {
+          throw new Error("WASM module not found")
         }
 
-        const createModule = (await import("../public/txt2db.js")).default
+        const wasmCode = await wasmResponse.text()
+        const moduleObj: any = {}
 
-        this.module = await createModule({
+        // Execute the Emscripten-generated code in a context where it can create the module
+        const moduleFactory = new Function("return " + wasmCode)()
+
+        this.module = await moduleFactory({
           locateFile: (path: string) => {
             if (path.endsWith(".wasm")) {
               return "/txt2db.wasm"
@@ -242,11 +245,11 @@ class TXT2DBWrapper {
 
         // Initialize the database
         const initResult = this.module.initDatabase()
-        console.log("[TXT2DB]", initResult)
+        console.log("[DSDB]", initResult)
 
         this.initialized = true
       } catch (error) {
-        console.warn("[TXT2DB] WASM not available, using mock database. Run GitHub Actions to build WASM.")
+        console.warn("[DSDB] WASM not available, using mock database. Run GitHub Actions to build WASM.")
         this.useMock = true
         this.mockDB = new MockTXT2DB()
         await this.mockDB.initialize()
