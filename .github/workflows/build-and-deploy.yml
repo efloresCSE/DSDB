@@ -40,6 +40,11 @@ jobs:
         make clean
         make
     
+    - name: Check artifact size
+      run: |
+        echo "WASM files:"
+        ls -lh public/txt2db.* || echo "No WASM files found"
+
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
@@ -73,3 +78,5 @@ jobs:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
+      with:
+        timeout: 600000

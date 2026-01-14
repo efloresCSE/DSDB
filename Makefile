@@ -11,13 +11,15 @@ LDFLAGS = -sWASM=1 \
           -sMODULARIZE=1 \
           -sEXPORT_NAME=createTXT2DBModule \
           -sALLOW_MEMORY_GROWTH=1 \
-          -sINITIAL_MEMORY=16MB \
-          -sMAXIMUM_MEMORY=512MB \
+          -sINITIAL_MEMORY=8MB \
+          -sMAXIMUM_MEMORY=256MB \
           -sFILESYSTEM=1 \
           -sNO_DISABLE_EXCEPTION_CATCHING \
           -sEXPORTED_RUNTIME_METHODS=['FS'] \
           -lembind \
-          --bind
+          --bind \
+          -sASSERTIONS=0 \
+          -sEXCEPTION_DEBUG=0
 
 # Source files
 SOURCES = $(wildcard src/*.cpp)
@@ -31,8 +33,10 @@ $(OUTPUT): $(SOURCES)
 	@mkdir -p public
 	$(CXX) $(CXXFLAGS) $(SOURCES) $(LDFLAGS) -o $(OUTPUT)
 	@echo "Build complete! Output: $(OUTPUT) and $(OUTPUT:.js=.wasm)"
+	@gzip -9 -k public/txt2db.wasm
+	@echo "Compressed WASM created"
 
 clean:
-	rm -f public/txt2db.js public/txt2db.wasm
+	rm -f public/txt2db.js public/txt2db.wasm public/txt2db.wasm.gz
 
 .PHONY: all clean
